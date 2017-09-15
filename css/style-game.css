@@ -3,6 +3,13 @@ body {
 	margin: 0 auto;
 	
 }
+.container {
+    margin-left: 0px;
+    width: 100vw;
+}
+#container {
+    width: 960px;
+}
 #game-board {
     width: 768px;
     height: 768px;
@@ -13,10 +20,10 @@ body {
 	position: absolute;
 }
 #info {
-    max-width: 500px;
+    max-width: 220px;
     height: 100vh;
     position: absolute;
-    left: 800px;
+    left: 792px;
     border-radius: 25px;
 }
 .player-info{
@@ -231,3 +238,37 @@ img#die-img {
     margin-left: 68px;
 }
 
+@media screen and (min-width: 600px) and (max-width: 800px) {
+    #game-board {
+    width: 600px;
+    height: 600px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: absolute;
+    position: absolute;
+    }
+    .space {
+    width: 33px;
+    height: 33px;
+    display: inline-block;
+    }
+    #info {
+    max-width: 220px;
+    position: absolute;
+    left: 78%;
+    }
+    .row {  }
+    #row1 { 
+        margin-top: 0px;
+    margin-left: 6px;
+    height: 33px;
+     }
+    #row2 {}
+    #col1 {
+            margin-right: -9px;
+    }
+    #row-finish {
+    margin-top: -272px;
+    margin-left: 367px;
+    }
+}

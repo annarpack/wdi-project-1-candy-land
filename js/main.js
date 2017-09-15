@@ -1,5 +1,16 @@
 $('document').ready(function() {
+// function setPlayers() {
+// 	console.log('inside set players');
+// 	var value3 = document.forms["form-players"]["playersNum"].value;
+// 	console.log(value3);
 
+// 	// var playerNum = localStorage.getItem('playersNum');
+// 	// console.log(playerNum);
+
+// 	// $('#playersNum').value = playerNum;
+// 	// console.log(playerNum);
+// 	// $('#value').text(playerNum);
+// }
 
 function renderUnqSpacesObj () {
 		var $space =  $('#space'+this.num+'');
@@ -341,21 +352,6 @@ function getPlayer(turn) {
 // ----------------------------------------------------------------------------------------------
 
 
-function rollDie() {
-	var n = (Math.random() * 5);
-	n = Math.ceil(n);
-	//console.log("Roll n:" + n);
-
-	var img = $('#die-img');
-	for (i=0; i < 10; i++) {
-		if(n === i) {
-			img.attr('src', './images/dice-' + i + '.jpg');
-		}
-	}
-	return n;
-}//end RollDie function
-
-
 function characterOptions(newNum) {
 	if (newNum === 6 ) {
 		$('.charDiv').show( "slow", function() {
@@ -469,6 +465,22 @@ function changePlayerImg(num){
 	$($player[0]).addClass('green');
 
 }
+
+function rollDie() {
+	var n = (Math.random() * 5);
+	n = Math.ceil(n);
+	//console.log("Roll n:" + n);
+
+	var img = $('#die-img');
+	for (i=0; i < 10; i++) {
+		if(n === i) {
+			img.attr('src', './images/dice-' + i + '.jpg');
+		}
+	}
+	return n;
+}//end RollDie function
+
+
 
 function takeTurn(num, piece) {
 	//console.log(piece);

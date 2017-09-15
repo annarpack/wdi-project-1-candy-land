@@ -10,35 +10,42 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css">
   <link rel="stylesheet" type="text/css" href="./css/style-landing.css">
 
-  <script type="text/javascript">
-function submitPlayers() {
-	console.log('anything');
-	$('input#input').submit();
-		var $input = document.forms["players"]["playersNum"].value;
-		console.log($input);
-	if ($input === '' ) {
-		$(' <div></div> ').text('That is not a valid input').appendTo($('h2'));
-	}
 
-	players = parseInt($input);
-
-	return players;
-	console.log(players);
-}
-
-
-</script>
 </head>
 <body>
-<div class="container">
+<!-- <div class="container"> -->
 <h2>How many players?</h2>
-<form name="players" action="game.html" onsubmit="return submitPlayers()" method="post">
-<input type="number" name="playersNum" class="input" id="input" min="1" max="4">
-<input type="button" value="Submit" formaction="game.html">
+<p id='value'></p>
+<!-- onsubmit="return sendForm()" -->
+<!-- action="./game.html" -->
+<form name="form-players" method="post" id='form1' >
+<label for="playersNum">Number of Players</label>
+<input  onchange="setPlayers()" type="number" value="0" id="playersNum" name="playersNum" min="1" max="4" required="true" size="20">
+
+<!-- onchange="setPlayers()" -->
+<!-- <input type="submit" value="Submit" > -->
+<button  onclick="setPlayers()">
 </form>
-</div>
+<!-- </div> -->
 
 
+<script>
+function setPlayers() {
+	console.log('inside set players');
+	var value3 = document.forms["form-players"]["playersNum"].value;
+	console.log(value3);
 
+
+	var playerNum = localStorage.setItem('playersNum', value3);
+	console.log(playerNum);
+	var value = $('input#playersNum').innerHTML;
+	console.log(value);
+	var value2 = localStorage.playersNum;
+	console.log(value2);
+	$('#value').innerHTML = playerNum;
+}
+
+// Check browser support
+</script>
 </body>
 </html>
