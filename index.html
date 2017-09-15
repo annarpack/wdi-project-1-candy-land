@@ -6,18 +6,39 @@
   src="https://code.jquery.com/jquery-3.2.1.min.js"
   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
   crossorigin="anonymous"></script>
-  <script type="text/javascript" src="./main.js"></script>
-  <link rel="stylesheet" type="text/css" href="./style.css">
+  <script type="text/javascript" src="./js/main.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css">
+  <link rel="stylesheet" type="text/css" href="./css/style-landing.css">
+
+  <script type="text/javascript">
+function submitPlayers() {
+	console.log('anything');
+	$('input#input').submit();
+		var $input = document.forms["players"]["playersNum"].value;
+		console.log($input);
+	if ($input === '' ) {
+		$(' <div></div> ').text('That is not a valid input').appendTo($('h2'));
+	}
+
+	players = parseInt($input);
+
+	return players;
+	console.log(players);
+}
+
+
+</script>
 </head>
 <body>
-<div id="game-board">
-	
-
+<div class="container">
+<h2>How many players?</h2>
+<form name="players" action="game.html" onsubmit="return submitPlayers()" method="post">
+<input type="number" name="playersNum" class="input" id="input" min="1" max="4">
+<input type="button" value="Submit" formaction="game.html">
+</form>
 </div>
 
-<div id="die">
-	<img src="./images/dice-start.jpg" id="die-img">
-</div>
+
 
 </body>
 </html>
