@@ -13,20 +13,35 @@
 
 </head>
 <body>
+
 <div class="container">
+	<header><img src="./images/candy-land-logo.png"></header>
 <h2>How many players?</h2>
 
-<!-- onsubmit="return sendForm()" -->
-<!-- action="./game.html" -->
 <form name="form-players" action="./game.html" method="post" id='form1' >
 <label for="playersNum">Number of Players: <p id='value'></p></label>
 <input  onchange="showPlayers()" type="number" value="0" id="playersNum" name="playersNum" min="1" max="4" required="true" size="20">
 
-<!-- onchange="setPlayers()" -->
+
 <input type="submit" value="Submit" >
-<!-- <button  onclick="setPlayers()"> -->
+
 </form>
 </div> <!-- end container -->
+<div id="background">
+	<div class="background" id="line1"></div>
+	<div class="background" id="line2"></div>
+	<div class="background" id="line3"></div>
+	<div class="background" id="line4"></div>
+		<div class="background" id="line5"></div>
+	<div class="background" id="line6"></div>
+	<div class="background" id="line7"></div>
+	<div class="background" id="line8"></div>
+		<div class="background" id="line9"></div>
+	<div class="background" id="line10"></div>
+	<div class="background" id="line11"></div>
+	<div class="background" id="line12"></div>
+
+</div>
 
 
 <script>
