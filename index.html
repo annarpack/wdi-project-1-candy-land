@@ -6,43 +6,38 @@
   src="https://code.jquery.com/jquery-3.2.1.min.js"
   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
   crossorigin="anonymous"></script>
-  <script type="text/javascript" src="./js/main.js"></script>
+  <script type="text/javascript" src="./js/landing.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css">
   <link rel="stylesheet" type="text/css" href="./css/style-landing.css">
 
 
 </head>
 <body>
-<!-- <div class="container"> -->
+<div class="container">
 <h2>How many players?</h2>
-<p id='value'></p>
+
 <!-- onsubmit="return sendForm()" -->
 <!-- action="./game.html" -->
-<form name="form-players" method="post" id='form1' >
-<label for="playersNum">Number of Players</label>
-<input  onchange="setPlayers()" type="number" value="0" id="playersNum" name="playersNum" min="1" max="4" required="true" size="20">
+<form name="form-players" action="./game.html" method="post" id='form1' >
+<label for="playersNum">Number of Players: <p id='value'></p></label>
+<input  onchange="showPlayers()" type="number" value="0" id="playersNum" name="playersNum" min="1" max="4" required="true" size="20">
 
 <!-- onchange="setPlayers()" -->
-<!-- <input type="submit" value="Submit" > -->
-<button  onclick="setPlayers()">
+<input type="submit" value="Submit" >
+<!-- <button  onclick="setPlayers()"> -->
 </form>
-<!-- </div> -->
+</div> <!-- end container -->
 
 
 <script>
-function setPlayers() {
-	console.log('inside set players');
-	var value3 = document.forms["form-players"]["playersNum"].value;
-	console.log(value3);
-
-
-	var playerNum = localStorage.setItem('playersNum', value3);
-	console.log(playerNum);
+function showPlayers() {
+	var playerNum = document.forms["form-players"]["playersNum"].value;
 	var value = $('input#playersNum').innerHTML;
-	console.log(value);
-	var value2 = localStorage.playersNum;
-	console.log(value2);
-	$('#value').innerHTML = playerNum;
+
+	$('#value').text(playerNum);
+	localStorage.setItem('playersNum', playerNum);
+	console.log(localStorage.getItem('playersNum', playerNum));
+
 }
 
 // Check browser support

@@ -8,35 +8,40 @@ body {
     width: 100vw;
 }
 #container {
-    width: 960px;
+    width: 100vw;
 }
 #game-board {
-    width: 768px;
-    height: 768px;
+    width: 82vw;
+    max-width: 768px;
+    height: 100vh;
+    max-height: 768px;
 	background-image: url('../images/game_board2.jpg');
 	background-size: 100%;
 	background-repeat: no-repeat;
-	background-position: absolute;
-	position: absolute;
+	background-position: fixed;
+    display: inline-block;
 }
 #info {
-    max-width: 220px;
+     width: 40vw;
+    max-width: 281px;
     height: 100vh;
-    position: absolute;
-    left: 792px;
+    left: 70%;
     border-radius: 25px;
+    display: inline;
+    float: right;
 }
 .player-info{
     font-size: 24px;
     color: white;
-    display: inline-block;
+    display: block;
         padding: 15px;
 }
-.player-info>img {
+.player-info .player-turn>img {
     max-width: 50px;
     max-height: 50px;
     display: inline;
     float: left;
+        margin-left: 11px;
 }
 .player-info>p{
     display: inline;
@@ -45,14 +50,20 @@ body {
 .player-turn {
     width: 84px;
     height: 84px;
-    position: absolute;
-    z-index: -1;
     margin-left: -23px;
     margin-top: -19px;
+    display:inline;
+    z-index: -1;
 }
 .green {
     background-color: lightgreen;
     border-radius: 50%;
+    z-index: -1;
+    display: inline-flex;
+    float: left;
+        width: 58px;
+    height: 58px;
+    margin-right: 0px;
 }
 .pieces {
 	max-height: 40px;
@@ -81,13 +92,13 @@ body {
 	transform:  unset;
 }
 #die {
-	position: absolute;
-	top: 20px;
+	top: 2%;
 /*    left: 980px;*/
     width: 150px;
     height: 150px;
 	border-radius: 25px;
 	background-color: white;
+    display: inline-block;
 }
 img#die-img {
 	margin-left: 10px;
@@ -95,81 +106,33 @@ img#die-img {
 	width: 125px;
 	height: 125px;
 }
-
-#row1 {
-    margin-top: 5px;
-    margin-left: 6px;
-    height: 42px;
-    width: 914px;
+.row {
+    height: 5.1%;
+    width: 100%;
+    padding-left:2%;
 }
-#row2 {
-    margin-top: 0px;
-    margin-left: 7px;
-    height: 42px;
-    width: 914px;
+#row-19 {
+    padding-top:2%;
 }
 #row-finish {
-    margin-top: -337px;
-    margin-left: 467px;
-    height: 42px;
-    width: 306px;
-    position: absolute;
-}
-.column {
+       margin-top: -281px;
+    margin-left: 453px;
+    height: 5%;
+    width: 96%;
     float: left;
-}
-#col1 {
-    float: right;
-    width: 42px;
-    margin-right: 7px;
+    display: inline;
 }
 
-#col1>.space {
-    margin-bottom: -7px;
-}
-#col2 { 
-    float: left;
-    width: 42px;
-    margin-left: 6px;
-}
-#col2>.space {
-    margin-bottom: -7px;
-}
-.pieces {
-    max-height: 40px;
-    position: absolute;
-    transform: none;
-}
-.pieces img {
-    max-height: 40px;
-    transform:  unset;
-}
-#die {
-    position: relative;
-    top: 20px;
-/*    left: 788px;*/
-    width: 150px;
-    height: 150px;
-    border-radius: 25px;
-    background-color: white;
-    margin-bottom: 100px;
-}
-img#die-img {
-    margin-left: 10px;
-    margin-top: 10px;
-    width: 125px;
-    height: 125px;
-}
 .space {
-    width: 42px;
-    height: 42px;
+    width: 5.1%;
+    height: 100%;
     display: inline-block;
 }
 #space-0 {
     background-image: url('../images/start.png');
 
 }
-#space-67 {
+#space-74 {
     background-image: url('../images/start.png');
 }
 .space .start {
@@ -237,7 +200,31 @@ img#die-img {
     margin-top: -222px;
     margin-left: 68px;
 }
-
+.pieces {
+    max-height: 40px;
+    position: absolute;
+    transform: none;
+}
+.pieces img {
+    max-height: 40px;
+    transform:  unset;
+}
+#die {
+    position: relative;
+    top: 2%;
+/*    left: 788px;*/
+    max-width: 150px;
+    max-height: 150px;
+    border-radius: 25px;
+    background-color: white;
+    margin-bottom: 100px;
+}
+img#die-img {
+    margin-left: 2%;
+    margin-top: 2%;
+    max-width: 125px;
+    max-height: 125px;
+}
 @media screen and (min-width: 600px) and (max-width: 800px) {
     #game-board {
     width: 600px;
@@ -271,4 +258,97 @@ img#die-img {
     margin-top: -272px;
     margin-left: 367px;
     }
-}
+    .player-turn {
+           width: 49px;
+    height: 50px;
+    margin-left: -13px;
+    margin-top: -10px;
+    }
+    .player-info {
+        width: 200px;
+        font-size: 18px;
+        padding: 10px;
+    }
+    .player-info>img {
+        max-height: 32px;
+    }
+    .pieces>img {
+        max-height: 25px;
+    }
+    .space .start {
+            margin-top: 10px;
+        font-size: 11px;
+    }
+} /*end media screen*/
+
+@media screen and (min-width: 100px) and (max-width: 599px) {
+    #game-board {
+    width: 400px;
+    height: 400px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: absolute;
+    position: absolute;
+    }
+    #die {
+            margin-bottom: 52px;
+    }
+    .space {
+    width: 21.5px;
+    height: 21.5px;
+    display: inline-block;
+    }
+    .space .icon>img {
+            max-width: 19px;
+        max-height: 16px;
+    }
+    #space-54 .icon>img {
+    max-width: 22px;
+    max-height: 15px;
+    }
+    #info {
+    max-width: 220px;
+        left: 74%;
+    }
+    .row {  
+    height: 352px;
+    line-height: 22px;
+    }
+    #row1 { 
+    margin-top: 7px;
+    margin-left: 6px;
+    height: 20px;
+     }
+    #row2 {}
+    #col1 {
+            margin-right: -13px;
+    }
+    #row-finish {
+        margin-top: -200px;
+    margin-left: 242px;
+    }
+    .player-turn {
+           width: 49px;
+    height: 50px;
+    margin-left: -13px;
+    margin-top: -10px;
+    }
+    .player-info {
+        width: 200px;
+        font-size: 18px;
+        padding: 10px;
+    }
+    .player-info>p{
+        padding:   0 10px 0px 20px;
+    }
+    .player-info>img {
+        max-height: 26px;
+    }
+    .pieces>img {
+        max-height: 17px;
+    }
+    .space .start {
+    margin-top: 1px;
+    font-size: 6px;
+    }
+} /*end media screen*/

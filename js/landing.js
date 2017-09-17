@@ -1,8 +1,14 @@
-$('document').ready(function(
+$('document').ready(function(){
 
 
-$('#submit').click()
+function setPlayers() {
+
+	var players = localStorage.getItem('playersNum');
+	console.log(players);
+	return players;
+}
 
 
 
-	)) // end jQuery
+
+	}) // end jQuery

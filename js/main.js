@@ -1,16 +1,33 @@
 $('document').ready(function() {
-// function setPlayers() {
-// 	console.log('inside set players');
-// 	var value3 = document.forms["form-players"]["playersNum"].value;
-// 	console.log(value3);
+function setPlayers() {
 
-// 	// var playerNum = localStorage.getItem('playersNum');
-// 	// console.log(playerNum);
+	var players = localStorage.getItem('playersNum');
+	console.log(players);
+	return players;
+}
+setPlayers();
+// ----------------------------------------------------------------------------------------------
 
-// 	// $('#playersNum').value = playerNum;
-// 	// console.log(playerNum);
-// 	// $('#value').text(playerNum);
-// }
+function renderRowObj () {
+	var $board = $('#game-board');
+	var $row = $('<div></div>')
+		.addClass('row')
+		.attr('id', 'row-' + this.num);
+	$row.appendTo($board);
+}//end function
+function createRowObj (num) {
+	return({
+		num: num, 
+		render: renderRowObj
+	})// end return
+}// end function
+function renderRows(elements) {
+	 elements.forEach(function(elm){
+	 	elm.render();
+	 })//end for each
+}//end function
+
+// ----------------------------------------------------------------------------------------------
 
 function renderUnqSpacesObj () {
 		var $space =  $('#space'+this.num+'');
@@ -18,7 +35,7 @@ function renderUnqSpacesObj () {
 		var $iconDiv = $('<div></div>')
 			.addClass('icon');
 		var $iconImg = $('<img>')
-			.attr('src', './images/icon-lolly.png');
+			.attr('src', this.img);
 		$iconImg.appendTo($iconDiv);
 		$iconDiv.appendTo($space);
 }//end function
@@ -37,12 +54,14 @@ function renderUnqSpaces(elements) {
 // ----------------------------------------------------------------------------------------------
 
 function renderSpaceObj() {
-
+	var $board = $('#row-'+this.position+'' );
+	//console.log($board);
 	var $space = $('<div></div>')
  		.addClass('space')
  		.attr('id','space-' + this.num)
- 		.css('background-color', this.color);		
-	$space.appendTo(this.position);	
+ 		.css('background-color', this.color);
+	 $space.appendTo($board);	
+	//$space.appendTo($board);
 
 	if ( this.num === 0) {
 		var $para = $('<p></p>')
@@ -126,14 +145,19 @@ function createCharObj(name, img) {
 		})//end return
 } // end function
 function renderChars(elements) {
+	var $board = $('#game-board');
+	var $div = $('<div></div> ')
+		.addClass('charDiv')
+		.attr('id', 'characters');
+	$div.appendTo($board);
+
+
 	 elements.forEach(function(elm){
 	 	elm.render();
 	 }) // end for each
 } // end function
 
-
 // -----------------------------------------------------------------------------------------------
-
 
 function renderPlayerObj() {
 	//console.log('inrender player');
@@ -153,10 +177,13 @@ function renderPlayerObj() {
 		.text('Player ' + this.num + '');
 	var playerImgDiv = $(' <div></div> ')
 		.addClass('player-turn');
+	if (this.num === '1') {
+		playerImgDiv.addClass('green');
+	}
 	var playerImg = $('<img>');
 	var playerSrc = './images/piece-'+ this.num + '.png';
 	playerImg.attr('src', playerSrc);
-	playerImg.appendTo(playerDiv);
+	playerImg.appendTo(playerImgDiv);
 	playerDiv.prepend(playerImgDiv);
 	playerP.appendTo(playerDiv);
 	playerDiv.appendTo($('#info'));
@@ -186,85 +213,86 @@ function renderBoard() {
 	var colors = ['red', 'purple', 'yellow', 'lightpink', 'cyan', 'orange', 'green'];
 	var $board = $('#game-board');
 	 this.spaces = [];
-	 var $space;
 
 	 var colorsInt = 0;
+	 var idNum = 52;
+	var idNum2 = 35;
+	var idNum3 = 74;
+	colorsInt = 0;
 
-	 	colorsInt = 4;
-	 	var idNum = 52;
-	 	for (s=0; s<10; s++) { 
-	 		var position = $('#col1');
-	 		var $space = this.createSpaceObj(idNum, colors[colorsInt], position);
-	 		colorsInt++;
-			this.spaces.push($space);
-			if (colorsInt === 7) {
-			colorsInt = 0;
-			}//end if
-			idNum++;
-	 	}
-	 	colorsInt = 0;
-	 	var idNum = 34;
-	 	for (s=0; s<18; s++) { 
-	 		var position = $('#row1');
-	 		var $space = this.createSpaceObj(idNum, colors[colorsInt], position);
-	 		colorsInt++;
-			this.spaces.push($space);
-			if (colorsInt === 7) {
-			colorsInt = 0;
-			}//end if
-			idNum++;
-	 	}
-	 	colorsInt = 5;
-	 	var idNum = 33;
-	 	for (s=0; s<16; s++) { 
-	 		var position = $('#col2');
-	 		var $space = this.createSpaceObj(idNum, colors[colorsInt], position);
-	 		colorsInt++;
-			this.spaces.push($space);
-			if (colorsInt === 7) {
-			colorsInt = 0;
-			}//end if
-			idNum--;
-	 	}
-	 	colorsInt = 0;
-		 var idNum = 17;
-	 	for (s=0; s<17; s++) { 
-	 		var position = $('#row2');
-	 		var $space = this.createSpaceObj(idNum, colors[colorsInt], position);
-	 		colorsInt++;
-			this.spaces.push($space);
-			if (colorsInt === 7) {
-			colorsInt = 0;
-			}//end if
-			idNum--;
-			if (idNum === 0){
-				var position = $('#row2');
-	 			var $space = this.createSpaceObj(idNum, 'none', position);
-				this.spaces.push($space);
-			}
-			
-	 	}
-	 	colorsInt = 6;
-	 	var idNum = 67;
-	 	for (s=0; s<6; s++) { 
-	 		if (idNum === 67){
-				var position = $('#row-finish');
-	 			var $space = this.createSpaceObj(idNum, 'none', position);
-				this.spaces.push($space);
-			}
-			else {
-	 		var position = $('#row-finish');
-	 		var $space = this.createSpaceObj(idNum, colors[colorsInt], position);
-	 		colorsInt++;
-			this.spaces.push($space);
-			if (colorsInt === 7) {
-			colorsInt = 0;
-			}//end if
-		}
-			idNum--;
-	 	}
+	 for (r=19; r>0; r--) { 
+	 		var $row = this.createRowObj(r);
+			this.rows.push($row);
+				if( r !== 1 && r !== 19) {
+					for (s=0; s<18; s++) { 
+					if (s === 0 ) {
+						var $space = this.createSpaceObj(idNum2, colors[colorsInt], r);
+						idNum2--;
+						colorsInt++;
+	 					if (colorsInt === 7) {
+							colorsInt = 0;
+						}//end if
+					this.spaces.push($space);
+					}// end if 
+					if (s === 17 && r > 7) {
+						var $space = this.createSpaceObj(idNum, colors[colorsInt], r);
+						idNum++;
+						colorsInt++;
+	 					if (colorsInt === 7) {
+							colorsInt = 0;
+						}//end if
+					this.spaces.push($space);
+					}// end if 
+					if (r === 7 && s > 9) {
+						var $space = this.createSpaceObj(idNum3, colors[colorsInt], r);
+						idNum3--;
+						colorsInt++;
+	 					if (colorsInt === 7) {
+							colorsInt = 0;
+						}//end if
+					this.spaces.push($space);
+					}// end if 
 
-	 
+					else {
+					var $space = this.createSpaceObj('x', 'none', r);
+					this.spaces.push($space);
+					}//end else
+				}// end for
+				}//end if
+				
+				if (r === 1 ) {
+					colorsInt = 4;
+					idNum = 18;
+					for (s=0; s<19; s++) { 
+						var $space = this.createSpaceObj(idNum, colors[colorsInt], r);
+						idNum--;
+						colorsInt++;
+	 					if (colorsInt === 7) {
+							colorsInt = 0;
+						}//end if
+					this.spaces.push($space);
+				}
+					
+				} // end if
+				if (r === 19) {
+					colorsInt = 3;
+					idNum = 36;
+					for (s=0; s<19; s++) { 
+						var $space = this.createSpaceObj(idNum, colors[colorsInt], r);
+						idNum++;
+						colorsInt++;
+	 					if (colorsInt === 7) {
+							colorsInt = 0;
+						}//end if
+					this.spaces.push($space);
+					}
+				} // end if
+
+
+		}//end for
+
+
+	 renderRows(this.rows);
 	 renderSpaces(this.spaces);
 
 	 this.characters = [
@@ -277,31 +305,39 @@ function renderBoard() {
 	 ]; // end characters
 	 renderChars(this.characters);
 
-	 this.players = [
-	 		createPlayerObj('1', '0', '0'),
-	 		createPlayerObj('2', '0', '0'),
-	 		createPlayerObj('3', '0', '0'),
-	 		createPlayerObj('4', '0', '0')
-	 ]; //end players
-	 renderPlayers(this.players);
-
 	 this.unqSpaces = [
 	 		createUnqSpacesObj('6', './images/icon-lolly.png'),
 	 		createUnqSpacesObj('15', './images/icon-lord.png'),
 	 		createUnqSpacesObj('28', './images/icon-mint.png'),
-	 		createUnqSpacesObj('36', './images/icon-frost.png'),
-	 		createUnqSpacesObj('54', './images/icon-gloppy.png')
+	 		createUnqSpacesObj('41', './images/icon-frost.png'),
+	 		createUnqSpacesObj('57', './images/icon-gloppy.png')
 	 ]; //end unqspaces
 	 renderUnqSpaces(this.unqSpaces);
+
+this.players = [];
+var $players = setPlayers();
+$players++
+for(i = 1; i < $players; i ++) {
+	var $player = this.createPlayerObj(i, '0', '0');
+	this.players.push($player);
+}
+
+
+	 renderPlayers(this.players);
+
+
 
 }/// end render Game Board
 
 var gameObj = {
+	"rows": [],
 	"spaces": [],
 	"unqSpaces": [],
 	"characters" : [],
 	"players": [],
 	turn: 0,
+	createRowObj: createRowObj,
+	renderRows: renderRows,
 	createSpaceObj: createSpaceObj,
 	renderSpaces: renderSpaces,
 	createUnqSpacesObj: createUnqSpacesObj,
@@ -407,7 +443,7 @@ function characterOptions(newNum) {
 				takeTurn(2, $player);
 		}, 2000);
 	}// end if
-	if (newNum === 38 ) {
+	if (newNum === 41 ) {
 		$('.charDiv').show( "slow", function() {
 			$('.charDiv').css('display', 'block');
 			 $('#queen-frostine').css('display', 'block');
@@ -424,7 +460,7 @@ function characterOptions(newNum) {
 				takeTurn(4, $player);
 		}, 2000);
 	}// end if
-	if (newNum === 54 ) {
+	if (newNum === 57 ) {
 		$('.charDiv').show( "slow", function() {
 			$('.charDiv').css('display', 'block');
 			 $('#gloppy').css('display', 'block');
@@ -439,11 +475,11 @@ function characterOptions(newNum) {
 		 var $player = gameObj.players[gameObj.turn];
   		$player.turn--;
 	}// end if
-	if (newNum === 67 ) {
+	if (newNum === 74 ) {
 		$('.charDiv').show( "slow", function() {
 			$('.charDiv').css('display', 'block');
 			 $('#candy-king').css('display', 'block');
-			 var player = getPlayer(gameObj.turn);
+			 var player = gameObj.players[gameObj.turn];
 			 $('#candy-king .bubble-text').text('Player ' + player + ' WINS! The Candy King congratulates you!');		 
   		});// end slide
   		setTimeout(function(){
@@ -457,10 +493,13 @@ function characterOptions(newNum) {
 }
 
 function changePlayerImg(num){
+	var $players = setPlayers();
 	var $playersArr = $('div').find( $('.player-turn'));
-
 		$playersArr.removeClass('green');
-	var $player = $('div').find( $('#player-' + num) ).children();
+		var newNum = parseInt(num);
+		if(newNum === $players) {newNum = 1;}
+		//console.log(newNum);
+	var $player = $('div').find( $('#player-' + newNum) ).children();
 	//console.log($player);
 	$($player[0]).addClass('green');
 
@@ -510,7 +549,7 @@ $('#die').click(function(event) {
 
 	var $player = gameObj.players[gameObj.turn];
 	var $turn = gameObj.players[gameObj.turn].turn;
-	//console.log($player);
+	console.log($player);
 
 	if($turn === -1) { 
 		var piece = getPlayer(turn);
