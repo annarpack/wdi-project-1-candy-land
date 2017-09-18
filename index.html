@@ -15,14 +15,15 @@
 <body>
 
 <div class="container">
-	<header><img src="./images/candy-land-logo.png"></header>
+	<header><img src="./images/candy-land-logo2.png"></header>
 <h2>How many players?</h2>
 
 <form name="form-players" action="./game.html" method="post" id='form1' >
-<label for="playersNum">Number of Players: <p id='value'></p></label>
+<label for="playersNum">Number of Players:</label>
+<p id='value'>?</p>
 <input  onchange="showPlayers()" type="number" value="0" id="playersNum" name="playersNum" min="1" max="4" required="true" size="20">
 <!-- <input type="submit" value="Start Game" > -->
-<a id="submit-button" class="button" href="./game.html">Start Game</a>
+<a id="submit-button" href="./game.html">Start Game</a>
 
 </form>
 </div> <!-- end container -->
@@ -50,7 +51,7 @@ function showPlayers() {
 
 	$('#value').text(playerNum);
 	localStorage.setItem('playersNum', playerNum);
-	console.log(localStorage.getItem('playersNum', playerNum));
+	//console.log(localStorage.getItem('playersNum', playerNum));
 
 }
 

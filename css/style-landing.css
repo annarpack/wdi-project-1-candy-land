@@ -12,13 +12,15 @@ body {
 	margin: 0 auto;
 	z-index: 2;
 		margin-top: 100px;
+    width: 60vw;
 }
 header {
 	margin-top: 10%;
-	width: 100vw;
+	width: 60vw;
+    margin: 0 auto;
 }
 header>img{
-	width: 50%;
+	width: 80%;
     margin: 0 auto;
 }
 
@@ -26,13 +28,30 @@ h1 {
 	text-align: center;
 	color: white;
 }
+
+#submit-button {
+    border-radius: 25px;
+    font-size: 18px;
+    font-weight: 500px;
+    color: white;
+    padding: 15px;
+    text-decoration: none;
+    text-transform: uppercase;
+
+    background: #fc8183; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#fc8183, #cb0101); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#fc8183, #cb0101); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#fc8183, #cb0101); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#fc8183, #cb0101); /* Standard syntax */
+}
+
 #background {
 	width: 100vw;
 	height: 100vh;
 	z-index: -1;
 	display: inline-flex;
 	overflow: hidden;
-	margin-top: -625px;
+	margin-top: -635px;
 }
 
 #line1 {
@@ -41,7 +60,7 @@ h1 {
     transform: rotate(38deg);
 	background-color: white;
 	border: 3px solid red;
-    margin-left: 100px;
+    margin-left: -90px;
     margin-top: -200px;
     	z-index: -1;
 
@@ -78,83 +97,83 @@ h1 {
 
 
 #line5 {
-    height: 1200px;
+    height: 1400px;
     width: 300px;
     transform: rotate(38deg);
 	background-color: white;
 	border: 3px solid red;
-    margin-left: 474px;
-    margin-top: -219px;
+    margin-left: 450px;
+    margin-top: -250px;
     	z-index: -1;
 
 }
 #line6{
 	border: 6px solid red;
-	    height: 1000px;
+	    height: 1200px;
     width: 10px;
     transform: rotate(38deg);
     background-color: red;
     margin-left: -174px;
-    margin-top: -122px;
+    margin-top: -150px;
 }
 
 #line7{
 	border: 6px solid red;
-	    height: 1000px;
+	    height: 1200px;
     width: 10px;
     transform: rotate(38deg);
     background-color: red;
     margin-left: 38px;
-    margin-top: -122px;
+    margin-top: -150px;
 }
 #line8{
 	border: 6px solid red;
-	    height: 1000px;
+	    height: 1200px;
     width: 10px;
     transform: rotate(38deg);
     background-color: red;
       margin-left: -142px;
-    margin-top: -122px;
+    margin-top: -150px;
 }
 
 
 
 #line9 {
-    height: 800px;
+    height: 1200px;
     width: 300px;
     transform: rotate(38deg);
 	background-color: white;
 	border: 3px solid red;
-    margin-left: 400px;
-    margin-top: 100px;
+    margin-left: 500px;
+    margin-top: 0px;
     	z-index: -1;
 
 }
 #line10{
 	border: 6px solid red;
-	    height: 800px;
+	    height: 1000px;
     width: 10px;
     transform: rotate(38deg);
     background-color: red;
-    margin-left: -160px;
-    margin-top: 200px;
+    margin-left: -110px;
+    margin-top: 100px;
 }
 
 #line11{
 	border: 6px solid red;
-	    height: 800px;
+	    height: 1000px;
     width: 10px;
     transform: rotate(38deg);
     background-color: red;
     margin-left: -77px;
-    margin-top: 200px;
+    margin-top: 100px;
 }
 #line12{
 	border: 6px solid red;
-	    height: 800px;
+	    height: 1000px;
     width: 10px;
     transform: rotate(38deg);
     background-color: red;
     margin-left: -84px;
-    margin-top: 200px;
+    margin-top: 100px;
 }
