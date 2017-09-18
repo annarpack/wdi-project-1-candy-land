@@ -377,7 +377,7 @@ function characterOptions(newNum) {
 			$('.charDiv').css('display', 'none');
 			 $('#princess-lolly').css('display', 'none');
 			});
-		}, 3000);// end Timeout
+		}, 5000);// end Timeout
 		var $player = gameObj.players[gameObj.turn].num;
 		setTimeout(function(){
 				takeTurn(2, $player);
@@ -397,7 +397,7 @@ function characterOptions(newNum) {
 				$('.charDiv').css('display', 'none');
 			 	$('#lord-licorice').css('display', 'none');
 			});
-		}, 3000);// end Timeout
+		}, 5000);// end Timeout
   		var $player = gameObj.players[gameObj.turn];
   		$player.turn--;
 		//console.log($player.turn);
@@ -407,34 +407,34 @@ function characterOptions(newNum) {
 		$('.charDiv').show( "slow", function() {
 			 $('.charDiv').css('display', 'inline-block');
 			 $('#mrmint').css('display', 'inline-block');
-			 $('#mrmint .bubble-text').text('Mr. Mint says, "You oughta-gotta have fun!" Move two spaces forward.');
+			 $('#mrmint .bubble-text').text('Mr. Mint says, "You oughta-gotta have fun!" Move four spaces forward.');
   		});// end slide
   		setTimeout(function(){
   			$('.charDiv').hide( "slow", function() {
 				$('.charDiv').css('display', 'none');
 			 	$('#mrmint').css('display', 'none');
 			});
-		}, 3000);// end Timeout
+		}, 5000);// end Timeout
 		var $player = gameObj.players[gameObj.turn].num;
 		setTimeout(function(){
-				takeTurn(2, $player);
+				takeTurn(4, $player);
 		}, 2000);
 	}// end if
 	if (newNum === 41 ) {
 		$('.charDiv').show( "slow", function() {
 			$('.charDiv').css('display', 'block');
 			 $('#queen-frostine').css('display', 'block');
-			 $('#queen-frostine .bubble-text').text('Queen Frostine has summoned you to the Gumdrop Mountains! Move 4 spaces forward.');		 
+			 $('#queen-frostine .bubble-text').text('Queen Frostine has summoned you to the Gumdrop Mountains! Move 8 spaces forward.');		 
   		});// end slide
   		setTimeout(function(){
   			$('.charDiv').hide( "slow", function() {
 				$('.charDiv').css('display', 'none');
 			 	$('#queen-frostine').css('display', 'none');
 			});
-		}, 3000);// end timeout
+		}, 5000);// end timeout
 		var $player = gameObj.players[gameObj.turn].num;
 		setTimeout(function(){
-				takeTurn(4, $player);
+				takeTurn(8, $player);
 		}, 2000);
 	}// end if
 	if (newNum === 61 ) {
@@ -448,7 +448,7 @@ function characterOptions(newNum) {
 			$('.charDiv').css('display', 'none');
 			 $('#gloppy').css('display', 'none');
 			});
-		}, 3000);// end Timeout
+		}, 5000);// end Timeout
 		 var $player = gameObj.players[gameObj.turn];
   		$player.turn--;
 
@@ -457,16 +457,19 @@ function characterOptions(newNum) {
 		$('.charDiv').show( "slow", function() {
 			$('.charDiv').css('display', 'block');
 			 $('#candy-king').css('display', 'block');
-			 var $player = gameObj.players[gameObj.turn].num;
-			 console.log($player);
-			 $('#candy-king .bubble-text').text('Player ' + $player + ' WINS! The Candy King congratulates you!');		 
+			 var $player = getPlayer(gameObj.turn);
+			 $('#candy-king .bubble-text').text('Player ' + $player + ' WINS! The Candy King congratulates you!');	
+			 // var $reset = $('<button></button>')
+			 // 	.attr('id', 'reset-button')
+			 // 	.text('Reset Game');
+			 // 	$reset.appendTo($('#candy-king .speach-bubble')); 
   		});// end slide
-  		setTimeout(function(){
-  			$('.charDiv').hide( "slow", function() {
-			$('.charDiv').css('display', 'none');
-			 $('#candy-king').css('display', 'none');
-			});
-		}, 3000);// end Timeout
+  // 		setTimeout(function(){
+  // 			$('.charDiv').hide( "slow", function() {
+		// 	$('.charDiv').css('display', 'none');
+		// 	 $('#candy-king').css('display', 'none');
+		// 	});
+		// }, 5000);// end Timeout
 	}// end if
 
 }
@@ -544,5 +547,16 @@ $('#die').click(function(event) {
 	} // end else 
 	changePlayerImg(piece);
 }); // end die click function
+
+
+// function resetGame(){
+// 	$('#reset-button').click(function(){
+// 		$('.piece').forEach(function(){
+// 			var newSpace = $('div').find( $('#space-' + 0) );
+// 				newSpace.append($piece);
+// 			gameObj.turn = 0;
+// 		})
+// 	})
+// }
 
 });// Document ready function

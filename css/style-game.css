@@ -226,6 +226,11 @@ img#die-img {
     max-width: 125px;
     max-height: 125px;
 }
+#reset-button {
+    position: absolute;
+    margin-top: 140px;
+    margin-left: -300px;
+}
 @media screen and (min-width: 600px) and (max-width: 800px) {
     #game-board {
     width: 74vw;
