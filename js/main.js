@@ -2,7 +2,7 @@ $('document').ready(function() {
 function setPlayers() {
 
 	var players = localStorage.getItem('playersNum');
-	console.log(players);
+	//console.log(players);
 	return players;
 }
 setPlayers();
@@ -310,21 +310,17 @@ function renderBoard() {
 	 		createUnqSpacesObj('15', './images/icon-lord.png'),
 	 		createUnqSpacesObj('28', './images/icon-mint.png'),
 	 		createUnqSpacesObj('41', './images/icon-frost.png'),
-	 		createUnqSpacesObj('57', './images/icon-gloppy.png')
+	 		createUnqSpacesObj('61', './images/icon-gloppy.png')
 	 ]; //end unqspaces
 	 renderUnqSpaces(this.unqSpaces);
 
 this.players = [];
 var $players = setPlayers();
-$players++
-for(i = 1; i < $players; i ++) {
+for(i = 1; i <= $players; i ++) {
 	var $player = this.createPlayerObj(i, '0', '0');
 	this.players.push($player);
 }
-
-
 	 renderPlayers(this.players);
-
 
 
 }/// end render Game Board
@@ -358,30 +354,11 @@ console.log(gameObj);
 gameObj.render();
 
 
-
-
 //----------------------------------------------------------------------------------------------
-// var players;
-// function submitPlayers() {
-// 	var $input = $('input#input').submit();
-
-// 	if ($input === '' ) {
-// 		$(' <div></div> ').text('That is not a valid input').appendTo($('h2'));
-// 	}
-
-// 	players = parseInt($input);
-
-// 	return players;
-// 	console.log(players);
-// }
-// var players = 4;
-// var player = 1;
-
 
 function getPlayer(turn) {
-	var $player = gameObj.players[turn];
-	var $turn = gameObj.players[gameObj.turn].turn;
-	return $player.num;
+	var $player = gameObj.players[turn].num;
+	return $player;
 
 } // end get player
 
@@ -460,7 +437,7 @@ function characterOptions(newNum) {
 				takeTurn(4, $player);
 		}, 2000);
 	}// end if
-	if (newNum === 57 ) {
+	if (newNum === 61 ) {
 		$('.charDiv').show( "slow", function() {
 			$('.charDiv').css('display', 'block');
 			 $('#gloppy').css('display', 'block');
@@ -474,13 +451,15 @@ function characterOptions(newNum) {
 		}, 3000);// end Timeout
 		 var $player = gameObj.players[gameObj.turn];
   		$player.turn--;
+
 	}// end if
 	if (newNum === 74 ) {
 		$('.charDiv').show( "slow", function() {
 			$('.charDiv').css('display', 'block');
 			 $('#candy-king').css('display', 'block');
-			 var player = gameObj.players[gameObj.turn];
-			 $('#candy-king .bubble-text').text('Player ' + player + ' WINS! The Candy King congratulates you!');		 
+			 var $player = gameObj.players[gameObj.turn].num;
+			 console.log($player);
+			 $('#candy-king .bubble-text').text('Player ' + $player + ' WINS! The Candy King congratulates you!');		 
   		});// end slide
   		setTimeout(function(){
   			$('.charDiv').hide( "slow", function() {
@@ -493,7 +472,9 @@ function characterOptions(newNum) {
 }
 
 function changePlayerImg(num){
+	num++;
 	var $players = setPlayers();
+	$players++;
 	var $playersArr = $('div').find( $('.player-turn'));
 		$playersArr.removeClass('green');
 		var newNum = parseInt(num);
@@ -509,7 +490,6 @@ function rollDie() {
 	var n = (Math.random() * 5);
 	n = Math.ceil(n);
 	//console.log("Roll n:" + n);
-
 	var img = $('#die-img');
 	for (i=0; i < 10; i++) {
 		if(n === i) {
@@ -531,35 +511,30 @@ function takeTurn(num, piece) {
 	var spaceNum = spaceArr[1];
 	spaceNum = parseInt(spaceNum);
 	var newNum = spaceNum + num;
-	//var newNum = 15;
-	//console.log('newNum:' + newNum);
-
 	var newSpace = $('div').find( $('#space-' + newNum) );
 	newSpace.append($piece);
-
 	characterOptions(newNum);
-	changePlayerImg(piece);
 
 }// end takeTurn function
 
 $('#die').click(function(event) {
 	if(gameObj.turn === gameObj.players.length ) { gameObj.turn = 0; }
 	var turn = gameObj.turn;
-
-
-	var $player = gameObj.players[gameObj.turn];
+	var $players = gameObj.players;
+	//console.log('players:' + $players[0].num);
+	var $player = gameObj.players[gameObj.turn].num;
+	//console.log($player);
 	var $turn = gameObj.players[gameObj.turn].turn;
-	console.log($player);
-
+	//console.log('player:' + $player);
 	if($turn === -1) { 
 		var piece = getPlayer(turn);
 		alert('Player ' + piece + ', your turn has been skipped.'); 
 		gameObj.players[gameObj.turn].turn = 0;
 		//console.log(gameObj.players[gameObj.turn].turn);
 		gameObj.turn++;
+		changePlayerImg(piece);
 		return;
 	} // end if
-
 	else {
 	var piece = getPlayer(turn);
 	//console.log('player:' + piece);
@@ -567,7 +542,7 @@ $('#die').click(function(event) {
 	takeTurn(num, piece);
 	gameObj.turn++;
 	} // end else 
-
+	changePlayerImg(piece);
 }); // end die click function
 
 });// Document ready function

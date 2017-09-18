@@ -6,19 +6,20 @@ body {
 	background-color: red;
 }
 .container{
-	border-radius: 50px;
+	border-radius: 25px;
 	padding: 50px;
 	background-color: red;
 	margin: 0 auto;
 	z-index: 2;
-		margin-top: 200px;
+		margin-top: 100px;
 }
 header {
 	margin-top: 10%;
 	width: 100vw;
 }
 header>img{
-	width: 44%;
+	width: 50%;
+    margin: 0 auto;
 }
 
 h1 {
@@ -31,129 +32,129 @@ h1 {
 	z-index: -1;
 	display: inline-flex;
 	overflow: hidden;
-	margin-top: -800px;
+	margin-top: -625px;
 }
 
 #line1 {
-    height: 3000px;
+    height: 1000px;
     width: 300px;
     transform: rotate(38deg);
 	background-color: white;
 	border: 3px solid red;
-	    margin-left: -300px;
-    margin-top: -430px;
+    margin-left: 100px;
+    margin-top: -200px;
     	z-index: -1;
 
 }
 #line2{
 	border: 6px solid red;
-	    height: 3000px;
+	    height: 1000px;
     width: 10px;
     transform: rotate(38deg);
     background-color: red;
-      margin-left: -166px;
-    margin-top: -430px;
+    margin-left: -170px;
+    margin-top: -200px;
 }
 
 #line3{
 	border: 6px solid red;
-	    height: 3000px;
+	    height: 1000px;
     width: 10px;
     transform: rotate(38deg);
     background-color: red;
     margin-left: 38px;
-    margin-top: -430px;
+    margin-top: -200px;
 }
 #line4{
 	border: 6px solid red;
-	    height: 3000px;
+	    height: 1000px;
     width: 10px;
     transform: rotate(38deg);
     background-color: red;
       margin-left: -142px;
-    margin-top: -430px;
+    margin-top: -200px;
 }
 
 
 
 #line5 {
-    height: 3000px;
+    height: 1200px;
     width: 300px;
     transform: rotate(38deg);
 	background-color: white;
 	border: 3px solid red;
-	    margin-left: 1000px;
-    margin-top: -430px;
+    margin-left: 474px;
+    margin-top: -219px;
     	z-index: -1;
 
 }
 #line6{
 	border: 6px solid red;
-	    height: 3000px;
+	    height: 1000px;
     width: 10px;
     transform: rotate(38deg);
     background-color: red;
-      margin-left: -166px;
-    margin-top: -430px;
+    margin-left: -174px;
+    margin-top: -122px;
 }
 
 #line7{
 	border: 6px solid red;
-	    height: 3000px;
+	    height: 1000px;
     width: 10px;
     transform: rotate(38deg);
     background-color: red;
     margin-left: 38px;
-    margin-top: -430px;
+    margin-top: -122px;
 }
 #line8{
 	border: 6px solid red;
-	    height: 3000px;
+	    height: 1000px;
     width: 10px;
     transform: rotate(38deg);
     background-color: red;
       margin-left: -142px;
-    margin-top: -430px;
+    margin-top: -122px;
 }
 
 
 
 #line9 {
-    height: 3000px;
+    height: 800px;
     width: 300px;
     transform: rotate(38deg);
 	background-color: white;
 	border: 3px solid red;
-	    margin-left: 1000px;
-    margin-top: -430px;
+    margin-left: 400px;
+    margin-top: 100px;
     	z-index: -1;
 
 }
 #line10{
 	border: 6px solid red;
-	    height: 3000px;
+	    height: 800px;
     width: 10px;
     transform: rotate(38deg);
     background-color: red;
-      margin-left: -166px;
-    margin-top: -430px;
+    margin-left: -160px;
+    margin-top: 200px;
 }
 
 #line11{
 	border: 6px solid red;
-	    height: 3000px;
+	    height: 800px;
     width: 10px;
     transform: rotate(38deg);
     background-color: red;
-    margin-left: 38px;
-    margin-top: -430px;
+    margin-left: -77px;
+    margin-top: 200px;
 }
 #line12{
 	border: 6px solid red;
-	    height: 3000px;
+	    height: 800px;
     width: 10px;
     transform: rotate(38deg);
     background-color: red;
-      margin-left: -142px;
-    margin-top: -430px;
+    margin-left: -84px;
+    margin-top: 200px;
 }
