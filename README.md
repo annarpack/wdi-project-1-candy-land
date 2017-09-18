@@ -1,4 +1,4 @@
-# wdi-project-1-candy-land
+
 <h1>Candy Land</h1>
 
 <h4>Game Instructions:</h4>

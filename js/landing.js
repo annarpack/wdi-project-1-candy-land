@@ -3,7 +3,7 @@ $('document').ready(function(){
 
 function setPlayers() {
 
-	var players = localStorage.getItem('playersNum');
+	var players = window.localStorage.getItem('playersNum');
 	console.log(players);
 	return players;
 }
