@@ -378,7 +378,9 @@ function characterOptions(newNum) {
 			 $('#princess-lolly').css('display', 'none');
 			});
 		}, 5000);// end Timeout
-		var $player = gameObj.players[gameObj.turn].num;
+		var turn = gameObj.turn;
+		turn--;
+		var $player = gameObj.players[turn].num;
 		setTimeout(function(){
 				takeTurn(2, $player);
 		}, 2000);
@@ -397,8 +399,9 @@ function characterOptions(newNum) {
 				$('.charDiv').css('display', 'none');
 			 	$('#lord-licorice').css('display', 'none');
 			});
-		}, 5000);// end Timeout
-  		var $player = gameObj.players[gameObj.turn];
+		}, 3500);// end Timeout
+		var turn = gameObj.turn-1;
+  		var $player = gameObj.players[turn];
   		$player.turn--;
 		//console.log($player.turn);
 	} // end if
@@ -407,34 +410,34 @@ function characterOptions(newNum) {
 		$('.charDiv').show( "slow", function() {
 			 $('.charDiv').css('display', 'inline-block');
 			 $('#mrmint').css('display', 'inline-block');
-			 $('#mrmint .bubble-text').text('Mr. Mint says, "You oughta-gotta have fun!" Move four spaces forward.');
+			 $('#mrmint .bubble-text').text('Mr. Mint says, "Chill out, Man." Hang out with Mr. Mint on Peppermint lane and loose your next turn.');
   		});// end slide
   		setTimeout(function(){
   			$('.charDiv').hide( "slow", function() {
 				$('.charDiv').css('display', 'none');
 			 	$('#mrmint').css('display', 'none');
 			});
-		}, 5000);// end Timeout
-		var $player = gameObj.players[gameObj.turn].num;
-		setTimeout(function(){
-				takeTurn(4, $player);
-		}, 2000);
+		}, 3500);// end Timeout
+		var turn = gameObj.turn - 1;
+		var $player = gameObj.players[turn];
+  		$player.turn--;
 	}// end if
 	if (newNum === 41 ) {
 		$('.charDiv').show( "slow", function() {
 			$('.charDiv').css('display', 'block');
 			 $('#queen-frostine').css('display', 'block');
-			 $('#queen-frostine .bubble-text').text('Queen Frostine has summoned you to the Gumdrop Mountains! Move 8 spaces forward.');		 
+			 $('#queen-frostine .bubble-text').text('Queen Frostine has summoned you to the Gumdrop Mountains! Move 4 spaces forward.');		 
   		});// end slide
   		setTimeout(function(){
   			$('.charDiv').hide( "slow", function() {
 				$('.charDiv').css('display', 'none');
 			 	$('#queen-frostine').css('display', 'none');
 			});
-		}, 5000);// end timeout
-		var $player = gameObj.players[gameObj.turn].num;
+		}, 3500);// end timeout
+		var turn = gameObj.turn - 1;
+		var $player = getPlayer(turn);
 		setTimeout(function(){
-				takeTurn(8, $player);
+				takeTurn(4, $player);
 		}, 2000);
 	}// end if
 	if (newNum === 61 ) {
@@ -448,8 +451,9 @@ function characterOptions(newNum) {
 			$('.charDiv').css('display', 'none');
 			 $('#gloppy').css('display', 'none');
 			});
-		}, 5000);// end Timeout
-		 var $player = gameObj.players[gameObj.turn];
+		}, 3500);// end Timeout
+		var turn = gameObj.turn - 1;
+		 var $player = gameObj.players[turn];
   		$player.turn--;
 
 	}// end if
@@ -457,19 +461,22 @@ function characterOptions(newNum) {
 		$('.charDiv').show( "slow", function() {
 			$('.charDiv').css('display', 'block');
 			 $('#candy-king').css('display', 'block');
-			 var $player = getPlayer(gameObj.turn);
+			 var turn = gameObj.turn - 1;
+		 	var $player = getPlayer(turn);
 			 $('#candy-king .bubble-text').text('Player ' + $player + ' WINS! The Candy King congratulates you!');	
-			 // var $reset = $('<button></button>')
-			 // 	.attr('id', 'reset-button')
-			 // 	.text('Reset Game');
-			 // 	$reset.appendTo($('#candy-king .speach-bubble')); 
+			 var $reset = $('<button></button>')
+			 	.attr('id', 'reset-button');
+			 	var $link = $('<a href="./index.html"></a>')
+			 		.text('Reset Game');
+			 $link.appendTo($reset);
+			 $reset.appendTo($('#candy-king .speach-bubble')); 
   		});// end slide
   // 		setTimeout(function(){
   // 			$('.charDiv').hide( "slow", function() {
 		// 	$('.charDiv').css('display', 'none');
 		// 	 $('#candy-king').css('display', 'none');
 		// 	});
-		// }, 5000);// end Timeout
+		// }, 4000);// end Timeout
 	}// end if
 
 }
@@ -542,7 +549,9 @@ $('#die').click(function(event) {
 	var piece = getPlayer(turn);
 	//console.log('player:' + piece);
 	var num = rollDie();
-	takeTurn(num, piece);
+	setTimeout(function(){
+			takeTurn(num, piece);
+	}, 500);
 	gameObj.turn++;
 	} // end else 
 	changePlayerImg(piece);
